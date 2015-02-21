@@ -27,4 +27,8 @@ public class Fahrenheit extends Temperature {
 	private double fahrToCels(double value){
 		return (5 * (value - 32)) / 9;
 	}
+	
+	public String toString(){
+		return "" + this.temperature + "F";
+	}
 }

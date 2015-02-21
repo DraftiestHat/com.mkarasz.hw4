@@ -27,4 +27,8 @@ public class Celsius extends Temperature{
 	private double celsToFahr(double value){
 		return ((9 * value) / 5) + 32;
 	}
+	
+	public String toString(){
+		return "" + this.temperature + "C";
+	}
 }
