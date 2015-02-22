@@ -24,7 +24,7 @@ public class MIDI {
 		int octave = 0;
 		
 		if(note.matches("^[A-G]{1}[#]?[-]?[0-9]{1}$")) {
-			if(note.matches("[A-G]{1}[#]?-[2-9]{1}")){ //checking for octaves less than -1
+			if(note.matches("[A-G]{1}[#]?[-]+[2-9]{1}")){ //checking for octaves less than -1
 				setNoteDefault();
 				System.out.println("Your note " + note + " was out of range. Setting to C4 Quarter note.");
 				System.exit(0);
@@ -57,8 +57,9 @@ public class MIDI {
 					else
 						noteEnum = Note.GSHARP;
 					
-					letter = note.substring(3);
-					octave = Integer.getInteger(letter);
+					letter = note.substring(2);
+					//System.out.println("" + letter + " what you entered.");
+					octave = Integer.parseInt(letter);
 				}
 				else {
 					letter = note.substring(0, 1);
@@ -83,8 +84,8 @@ public class MIDI {
 					else
 						noteEnum = Note.G;
 					
-					letter = note.substring(3);
-					octave = Integer.getInteger(letter);
+					letter = note.substring(1);
+					octave = Integer.parseInt(letter);
 				}
 			}
 		}
