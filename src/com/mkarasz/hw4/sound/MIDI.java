@@ -13,10 +13,17 @@ public class MIDI {
 	Length length;
 	int midiNumber = 0;
 	
+	/**
+	 * 
+	 */
 	public MIDI(){
 		setNoteDefault();
 	}
 	
+	/**
+	 * @param note
+	 * @param length
+	 */
 	public MIDI(String note, Length length){
 		this.length = length;
 		Note noteEnum = Note.A;
@@ -27,17 +34,17 @@ public class MIDI {
 			if(note.matches("[A-G]{1}[#]?[-]+[2-9]{1}")){ //checking for octaves less than -1
 				setNoteDefault();
 				System.out.println("Your note " + note + " was out of range. Setting to C4 Quarter note.");
-				System.exit(0);
+				return;
 			}
 			else if (note.matches("[A,B]{1}[#]?[9]{1}")) { //checking for A9, A#9, and B9
 				setNoteDefault();
 				System.out.println("Your note " + note + " was out of range. Setting to C4 Quarter note.");
-				System.exit(0);
+				return;
 			}
 			else if (note.equals("G#9")){ //couldn't do above cause G9 is valid, but G#9 isn't 
 				setNoteDefault();
 				System.out.println("Your note " + note + " was out of range. Setting to C4 Quarter note.");
-				System.exit(0);
+				return;
 			}
 			else{
 				if(note.matches("[A-G]{1}[#]{1}.*")) {
@@ -92,7 +99,7 @@ public class MIDI {
 		else {
 			System.out.println("Your note " + note + " was out of range. Setting to C4 Quarter note.");
 			setNoteDefault();
-			System.exit(0);
+			return;
 		}
 		
 		switch (noteEnum){//performs calulation with offset
@@ -135,54 +142,92 @@ public class MIDI {
 		}
 	}
 	
+	/**
+	 * @param midiNumber
+	 * @param length
+	 */
 	public MIDI(int midiNumber, Length length){
 		this.midiNumber = midiNumber;
 		this.length = length;
 	}
 	
+	/**
+	 * @param frequency
+	 * @param length
+	 */
 	public MIDI (double frequency, Length length){
 		setFrequency(frequency);
 		this.length = length;
 	}
 	
+	/**
+	 * 
+	 */
 	private void setNoteDefault(){
 		this.midiNumber = 60;
 		this.length = Length.QUARTER;
 	}
 	
+	/**
+	 * @param frequency
+	 */
 	public void setFrequency(double frequency){
 		this.midiNumber = (int) (12 * (Math.log(frequency/440)/Math.log(2)) + 69);
 	}
 	
+	/**
+	 * @return
+	 */
 	public double getFrequency(){ //Hz
 		return Math.pow(2, (this.midiNumber - 69)/12) * 440;
 	}
 	
+	/**
+	 * @param length
+	 */
 	public void setLength(Length length){
 		this.length = length;
 	}
 	
+	/**
+	 * @return
+	 */
 	public Length getLength(){
 		return this.length; 
 	}
 	
+	/**
+	 * @param midi
+	 */
 	public void setMidiNumber(int midi){
 		this.midiNumber = midi;
 	}
 	
+	/**
+	 * @return
+	 */
 	public int getMidiNumber(){
 		return this.midiNumber;
 	}
 	
+	/**
+	 * @param octave
+	 */
 	public void setOctave(int octave){
 		int last = this.midiNumber % 12;
 		this.midiNumber = octave * 12 + 12 + last;
 	}
 	
+	/**
+	 * @return
+	 */
 	public int getOctave(){
 		return (int) ((this.midiNumber / 12) - 1);
 	}
 	
+	/**
+	 * 
+	 */
 	public void setSharp(){
 		int check = this.midiNumber % 12;
 		switch(check){
@@ -198,6 +243,9 @@ public class MIDI {
 		}
 	}
 	
+	/**
+	 * @return
+	 */
 	public boolean isSharp(){
 		int check = this.midiNumber % 12;
 		switch(check){
