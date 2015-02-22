@@ -54,38 +54,34 @@ public class Sound {
 		
 		if(in.hasNextDouble()){
 			length = in.nextDouble();
-			//System.out.println("" + length + " length");
-			/*if (length != 1 || length != 0.5 || length != .25 || length != (1/8) || length != (1/16) || length != (1/32) || length != (1/64)){
+			System.out.println("" + length + " length");
+			
+			if(length == 1){
+				lenEntered = Length.WHOLE;
+			}
+			else if (length == (double) 0.5){
+				lenEntered = Length.HALF;
+			}
+			else if (length == (double) 0.25){
+				lenEntered = Length.QUARTER;
+			}
+			else if (length == (double) 1/8){
+				lenEntered = Length.EIGHTH;
+			}
+			else if (length == (double) 1/16){
+				lenEntered = Length.SIXTEENTH;
+			}
+			else if (length == (double) 1/32){
+				lenEntered = Length.THIRTYSECONDTH;
+			}
+			else if (length == (double) 1/64){
+				lenEntered = Length.SIXTYFOURTH;
+			}
+			else{
 				System.out.println("You entered something wrong. Try again!");
 				System.exit(1);
 			}
-			else {*/
-				if(length == 1){
-					lenEntered = Length.WHOLE;
-				}
-				else if (length == 0.5){
-					lenEntered = Length.HALF;
-				}
-				else if (length == 0.25){
-					lenEntered = Length.QUARTER;
-				}
-				else if (length == 1/8){
-					lenEntered = Length.EIGHTH;
-				}
-				else if (length == 1/16){
-					lenEntered = Length.SIXTEENTH;
-				}
-				else if (length == 1/32){
-					lenEntered = Length.THIRTYSECONDTH;
-				}
-				else if (length == 1/64){
-					lenEntered = Length.SIXTYFOURTH;
-				}
-				else{
-					System.out.println("You entered something wrong. Try again!");
-					System.exit(1);
-				}
-			//}
+			
 		}
 		//System.out.println("" + length + " length2");
 		if(userChoice.equalsIgnoreCase("F")){
@@ -103,7 +99,7 @@ public class Sound {
 		if(inTwo.hasNextInt()){
 			bps = (double)inTwo.nextInt();
 			bps = bps / 60;
-			System.out.println("bps: " + bps);
+			//System.out.println("bps: " + bps);
 		}
 		else {
 			System.out.println("You enetered something wrong. Please try again!");
