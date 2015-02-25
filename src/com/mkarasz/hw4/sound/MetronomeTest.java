@@ -8,37 +8,58 @@ public class MetronomeTest {
 
 	@Test
 	public void testMetronome() {
-		fail("Not yet implemented");
+		Metronome m = new Metronome();
+		assertNotNull(m);
 	}
 
 	@Test
 	public void testMetronomeDoubleMIDI() {
-		fail("Not yet implemented");
+		MIDI m = new MIDI();
+		assertNotNull(m);
+		Metronome n = new Metronome(75.0, m);
+		assertNotNull(n);
 	}
 
 	@Test
 	public void testGetNote() {
-		fail("Not yet implemented");
+		MIDI m = new MIDI();
+		assertNotNull(m);
+		Metronome n = new Metronome(75.0, m);
+		assertNotNull(n);
+		assertEquals(m, n.getNote());
 	}
 
 	@Test
 	public void testSetNote() {
-		fail("Not yet implemented");
+		Metronome m = new Metronome();
+		assertNotNull(m);
+		MIDI n = new MIDI();
+		m.setNote(n);
+		assertEquals(n, m.getNote());
 	}
 
 	@Test
-	public void testGetBps() {
-		fail("Not yet implemented");
+	public void testGetBpm() {
+		MIDI m = new MIDI();
+		assertNotNull(m);
+		Metronome n = new Metronome(75.0, m);
+		assertNotNull(n);
+		assertEquals(75, n.getBpm(), 0);
 	}
 
 	@Test
-	public void testSetBps() {
-		fail("Not yet implemented");
+	public void testSetBpm() {
+		Metronome m = new Metronome();
+		assertNotNull(m);
+		m.setBpm(80);
+		assertEquals(80, m.getBpm(), 0);
 	}
 
 	@Test
 	public void testCalcSeconds() {
-		fail("Not yet implemented");
+		Metronome m = new Metronome();
+		assertNotNull(m);
+		assertEquals(1, m.calcSeconds(), 0);
 	}
 
 }

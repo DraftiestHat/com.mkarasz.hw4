@@ -4,66 +4,85 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.mkarasz.hw4.sound.MIDI.Length;
+
 public class MIDITest {
 
 	@Test
 	public void testMIDI() {
-		fail("Not yet implemented");
+		MIDI m = new MIDI();
+		assertNotNull(m);
 	}
 
 	@Test
 	public void testMIDIStringLength() {
-		fail("Not yet implemented");
+		MIDI m = new MIDI("A#4", Length.QUARTER);
+		assertNotNull(m);
 	}
 
 	@Test
 	public void testMIDIIntLength() {
-		fail("Not yet implemented");
+		MIDI m = new MIDI(48, Length.QUARTER);
+		assertNotNull(m);
 	}
 
 	@Test
 	public void testMIDIDoubleLength() {
-		fail("Not yet implemented");
+		MIDI m = new MIDI(428.3, Length.QUARTER);
+		assertNotNull(m);
 	}
 
 	@Test
 	public void testSetFrequency() {
-		fail("Not yet implemented");
+		MIDI m = new MIDI();
+		assertNotNull(m);
+		m.setFrequency(27.5);
+		//System.out.println("" + m.getMidiNumber());
+		assertEquals(21, m.getMidiNumber(), 1);
 	}
 
 	@Test
 	public void testGetFrequency() {
-		fail("Not yet implemented");
+		MIDI m = new MIDI();
+		assertNotNull(m);
+		assertEquals(261.63, m.getFrequency(), .2);
 	}
 
 	@Test
 	public void testSetOctave() {
-		fail("Not yet implemented");
+		MIDI m = new MIDI();
+		assertNotNull(m);
+		m.setOctave(6);
+		assertEquals(84, m.getMidiNumber(), 0);
 	}
 
 	@Test
 	public void testGetOctave() {
-		fail("Not yet implemented");
+		MIDI m = new MIDI();
+		assertNotNull(m);
+		assertEquals(4, m.getOctave(), 0);
 	}
 
 	@Test
 	public void testSetSharp() {
-		fail("Not yet implemented");
+		MIDI m = new MIDI();
+		assertNotNull(m);
+		m.setSharp();
+		assertEquals(61, m.getMidiNumber(), 0);
 	}
 
 	@Test
 	public void testIsSharp() {
-		fail("Not yet implemented");
+		MIDI m = new MIDI();
+		assertNotNull(m);
+		assertFalse("M is sharp. Woops.", m.isSharp());
 	}
 
 	@Test
 	public void testGetNote() {
-		fail("Not yet implemented");
+		MIDI m = new MIDI();
+		assertNotNull(m);
+		String s = m.getNote();
+		assertTrue(s.equals("C"));
 	}
-
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
-
 }

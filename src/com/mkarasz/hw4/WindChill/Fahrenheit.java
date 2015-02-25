@@ -2,7 +2,7 @@ package com.mkarasz.hw4.WindChill;
 
 public class Fahrenheit extends Temperature {
 	public Fahrenheit(){
-		this.temperature = 0;
+		this.temperature = 32;
 	}
 	
 	public Fahrenheit(double temperature){

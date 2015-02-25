@@ -1,12 +1,16 @@
 package com.mkarasz.hw4.sound;
 
 
+/** Implements (simply) a MIDI note and its length.
+ * @author Matt
+ *
+ */
 public class MIDI {
 	public enum Length { 
 		WHOLE, HALF, QUARTER, EIGHTH, SIXTEENTH, THIRTYSECONDTH, SIXTYFOURTH
 	}
 	
-	private enum Note {
+	private enum Note { //made this to make switching easier
 		C, CSHARP, D, DSHARP, E, F, FSHARP, G, GSHARP, A, ASHARP, B
 	}
 	
@@ -14,13 +18,13 @@ public class MIDI {
 	int midiNumber = 0;
 	
 	/**
-	 * 
+	 * Sets the MIDI to the default stuff, as seen in default helper method below.
 	 */
 	public MIDI(){
 		setNoteDefault();
 	}
 	
-	/**
+	/** Parses out the string note and sets the length
 	 * @param note
 	 * @param length
 	 */
@@ -142,7 +146,7 @@ public class MIDI {
 		}
 	}
 	
-	/**
+	/** Sets the MIDI number of the note and its length
 	 * @param midiNumber
 	 * @param length
 	 */
@@ -151,7 +155,7 @@ public class MIDI {
 		this.length = length;
 	}
 	
-	/**
+	/** Sets the frequency of the note, and then the length
 	 * @param frequency
 	 * @param length
 	 */
@@ -161,71 +165,71 @@ public class MIDI {
 	}
 	
 	/**
-	 * 
+	 * Sets the MIDI note to default stuff. Easier on me than writing same code 40 times.
 	 */
 	private void setNoteDefault(){
 		this.midiNumber = 60;
 		this.length = Length.QUARTER;
 	}
 	
-	/**
-	 * @param frequency
+	/** Lets you set the frequency of the current MIDI note
+	 * @param frequency to set
 	 */
 	public void setFrequency(double frequency){
 		this.midiNumber = (int) (12 * (Math.log(frequency/440)/Math.log(2)) + 69);
 	}
 	
-	/**
-	 * @return
+	/** Gets you the frequency of the current MIDI note
+	 * @return frequency of the note
 	 */
 	public double getFrequency(){ //Hz
-		return Math.pow(2, (this.midiNumber - 69)/12) * 440;
+		return Math.pow(2, ((double)this.midiNumber - 69)/12) * 440;
 	}
 	
-	/**
-	 * @param length
+	/** Lets you set how long the note is
+	 * @param length the enum'd length of the note
 	 */
 	public void setLength(Length length){
 		this.length = length;
 	}
 	
-	/**
-	 * @return
+	/** The length of the note
+	 * @return Length an enum to how long the note is
 	 */
 	public Length getLength(){
 		return this.length; 
 	}
 	
-	/**
-	 * @param midi
+	/** Lets you set the MIDI number of the current note
+	 * @param midi the MIDI number to set
 	 */
 	public void setMidiNumber(int midi){
 		this.midiNumber = midi;
 	}
 	
-	/**
-	 * @return
+	/** gets you the MIDI number of the current note
+	 * @return midi number of note
 	 */
 	public int getMidiNumber(){
 		return this.midiNumber;
 	}
 	
-	/**
-	 * @param octave
+	/** lets you set the octave of the note. Doesn't affect where it is in the scale.
+	 * @param octave the octave the note should take
 	 */
 	public void setOctave(int octave){
 		int last = this.midiNumber % 12;
 		this.midiNumber = octave * 12 + 12 + last;
 	}
 	
-	/**
-	 * @return
+	/** Gets you the octave of the current note.
+	 * @return the octave from -1 to 9
 	 */
 	public int getOctave(){
 		return (int) ((this.midiNumber / 12) - 1);
 	}
 	
-	/**
+	/** Sets the note to sharp if it can be, else prints error and does nothing.
 	 * 
 	 */
 	public void setSharp(){
@@ -243,8 +247,8 @@ public class MIDI {
 		}
 	}
 	
-	/**
-	 * @return
+	/** Returns whether or not the note is sharp.
+	 * @return true - note is sharp, else false
 	 */
 	public boolean isSharp(){
 		int check = this.midiNumber % 12;
@@ -260,8 +264,8 @@ public class MIDI {
 		}
 	}
 	
-	/**
-	 * @return
+	/** Returns the note of the current MIDI note
+	 * @return the note
 	 */
 	public String getNote(){
 		int check = this.midiNumber % 12;

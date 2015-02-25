@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 import com.mkarasz.hw4.sound.MIDI.Length;
 
+/**Simple parsing and getting user input for MIDI and metronome.
+ * @author Matt
+ *
+ */
 public class Sound {
 
 	public static void main(String[] args) {
@@ -16,7 +20,7 @@ public class Sound {
 		Length lenEntered = Length.QUARTER; 
 		int mNum = -1;
 		MIDI noteMIDI = null;
-		double bps = 0.0;
+		double bpm = 0.0;
 		Metronome met = null;
 		
 		System.out.println("Would you like to enter a frequency, a note in SPN form, or a MIDI number?");
@@ -97,16 +101,14 @@ public class Sound {
 		System.out.println("What are the beats per minute?");
 		
 		if(inTwo.hasNextInt()){
-			bps = (double)inTwo.nextInt();
-			bps = bps / 60;
-			//System.out.println("bps: " + bps);
+			bpm = (double)inTwo.nextInt();
 		}
 		else {
 			System.out.println("You enetered something wrong. Please try again!");
 			System.exit(0);
 		}
 		
-		met = new Metronome(bps, noteMIDI);
+		met = new Metronome(bpm, noteMIDI);
 		
 		System.out.println("The duration is " + met.calcSeconds() + " seconds.");
 		

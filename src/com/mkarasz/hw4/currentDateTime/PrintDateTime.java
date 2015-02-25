@@ -5,10 +5,14 @@ import java.util.GregorianCalendar;
 import java.text.SimpleDateFormat;
 
 
+/** Prints out info about the current date
+ * @author Matt
+ *
+ */
 public class PrintDateTime {
 
 	public static void main(String[] args) {
-		String curTime = new SimpleDateFormat("MM/dd/yy hh:mm a").format(Calendar.getInstance().getTime());
+		String curTime = new SimpleDateFormat("MM/dd/yy hh:mm a").format(Calendar.getInstance().getTime()); //My one use of SimpleDateFormat
 		Calendar cal = new GregorianCalendar();
 		
 		System.out.println(curTime);

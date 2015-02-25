@@ -8,37 +8,47 @@ public class FahrenheitTest {
 
 	@Test
 	public void testGetCelsius() {
-		fail("Not yet implemented");
+		Temperature t = new Fahrenheit();
+		assertEquals(0, t.getCelsius(), 0);
+		t = new Fahrenheit(33.8);
+		assertEquals(1, t.getCelsius(), .1);
 	}
 
 	@Test
 	public void testGetFahrenheit() {
-		fail("Not yet implemented");
+		Temperature t = new Fahrenheit();
+		assertEquals(32, t.getFahrenheit(), 0);
+		t = new Fahrenheit(48);
+		assertEquals(48, t.getFahrenheit(), 0);
 	}
 
 	@Test
 	public void testFahrenheit() {
-		fail("Not yet implemented");
+		Temperature t = new Fahrenheit();
+		assertNotNull(t);
 	}
 
 	@Test
 	public void testFahrenheitDouble() {
-		fail("Not yet implemented");
+		Temperature t = new Fahrenheit(48);
+		assertNotNull(t);
 	}
 
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testGetTemperature() {
-		fail("Not yet implemented");
+		Temperature t = new Fahrenheit();
+		assertEquals(32, t.getTemperature(), 0);
+		t = new Fahrenheit(16);
+		assertEquals(16, t.getTemperature(), 0);
 	}
 
 	@Test
 	public void testSetTemperature() {
-		fail("Not yet implemented");
+		Temperature t = new Fahrenheit();
+		assertEquals(32, t.getTemperature(), 0);
+		t.setTemperature(48);
+		assertEquals(48, t.getFahrenheit(), 0);
 	}
 
 }
